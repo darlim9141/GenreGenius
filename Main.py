@@ -16,6 +16,14 @@ class Main:
         
 
         spotify_recommender = Recommender(client_id, client_secret)
+        favorite_tracks = []
+        print(f"Enter your top %d favorite tracks: ", (track_nums))
+        for i in range(track_nums):
+            favorite_tracks.append(input(f"Track {i + 1}: "))
+        json_file = spotify_recommender.get_json_result(favorite_tracks)
+
+        with open('./result_example.json', 'w') as f:
+            json.dump(json_file, f, indent=4)
         
         # favorite_tracks = []
         # print(f"Enter your top %d favorite tracks: ", (track_nums))
