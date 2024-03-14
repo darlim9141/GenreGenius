@@ -45,3 +45,9 @@ class Recommender:
     def get_available_genre_seeds(self):
         genres = self.sp.recommendation_genre_seeds()
         return genres
+
+    def get_json_result(self, favorite_tracks):
+        details = self.get_track_details(favorite_tracks)
+        track_ids = [d['ids'][0] for d in details.values() if d['ids']]
+        recommended = self.sp.recommendations(seed_tracks=track_ids, limit=50)
+        return recommended
