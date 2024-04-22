@@ -1,0 +1,54 @@
+음악 데이터 List 안에 dictionary형태로 음악에 대한 정보가 정리되어있는 형식
+
+이 list를 가지고 너가 원하는 값이나 정보를 추출해서 사용 
+아래 2개는 보기 쉽게 정리해놓은거, 아래 3개는 원래 모습
+
+[
+{'id': '7qiZfU4dY1lWllzX7mPBI3', 
+	'name': 'Shape of You', 
+	'artist': 'Ed Sheeran', 
+	'album': '÷ (Deluxe)', 
+	'release_date': '2017-03-03', 
+	'popularity': 87, 
+	'duration_ms': 233712, 
+	'explicit': False, 
+	'danceability': 0.825, 
+	'energy': 0.652, 
+	'key': 1, 
+	'loudness': -3.183, 
+	'mode': 0, 
+	'speechiness': 0.0802, 
+	'acousticness': 0.581, 
+	'instrumentalness': 0, 
+	'liveness': 0.0931, 
+	'valence': 0.931, 
+	'tempo': 95.977, 
+	'time_signature': 4}, 
+
+{'id': '3rmo8F54jFF8OgYsqTxm5d',
+  'name': 'Bad Habits', 
+  'artist': 'Ed Sheeran', 
+  'album': '=', 
+  'release_date': '2021-10-29', 
+  'popularity': 82, 
+  'duration_ms': 230746, 
+  'explicit': False, 
+  'danceability': 0.807, 
+  'energy': 0.893, 
+  'key': 11, 
+  'loudness': -3.745, 
+  'mode': 0, 
+  'speechiness': 0.0347, 
+  'acousticness': 0.0451, 
+  'instrumentalness': 2.79e-05, 
+  'liveness': 0.366, 
+  'valence': 0.537, 
+  'tempo': 126.011, 
+  'time_signature': 4}, 
+
+{'id': '0VjIjW4GlUZAMYd2vXMi3b', 'name': 'Blinding Lights', 'artist': 'The Weeknd', 'album': 'After Hours', 'release_date': '2020-03-20', 'popularity': 91, 'duration_ms': 200040, 'explicit': False, 'danceability': 0.514, 'energy': 0.73, 'key': 1, 'loudness': -5.934, 'mode': 1, 'speechiness': 0.0598, 'acousticness': 0.00146, 'instrumentalness': 9.54e-05, 'liveness': 0.0897, 'valence': 0.334, 'tempo': 171.005, 'time_signature': 4}, 
+
+{'id': '5bcTCxgc7xVfSaMV3RuVke', 'name': 'Feels (feat. Pharrell Williams, Katy Perry & Big Sean)', 'artist': 'Calvin Harris', 'album': 'Funk Wav Bounces Vol.1', 'release_date': '2017-06-30', 'popularity': 76, 'duration_ms': 223413, 'explicit': True, 'danceability': 0.893, 'energy': 0.745, 'key': 11, 'loudness': -3.105, 'mode': 0, 'speechiness': 0.0571, 'acousticness': 0.0642, 'instrumentalness': 0, 'liveness': 0.0943, 'valence': 0.872, 'tempo': 101.018, 'time_signature': 4}, 
+
+{'id': '42VsgItocQwOQC3XWZ8JNA', 'name': 'FE!N (feat. Playboi Carti)', 'artist': 'Travis Scott', 'album': 'UTOPIA', 'release_date': '2023-07-28', 'popularity': 94, 'duration_ms': 191700, 'explicit': True, 'danceability': 0.569, 'energy': 0.882, 'key': 3, 'loudness': -2.777, 'mode': 0, 'speechiness': 0.06, 'acousticness': 0.0316, 'instrumentalness': 0, 'liveness': 0.142, 'valence': 0.201, 'tempo': 148.038, 'time_signature': 4}
+]
