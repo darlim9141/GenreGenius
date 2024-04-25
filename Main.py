@@ -1,64 +1,59 @@
 from Recommender import Recommender
+from User import User
+from MusicRecommenderSystem import MusicRecommenderSystem
 from dotenv import load_dotenv
 import os
 import base64
 from requests import post
 import json
 
-track_nums = 5
-load_dotenv()
-client_id = os.environ.get("CLIENT_ID")
-client_secret = os.environ.get("CLIENT_SECRET")
+
 
 class Main:
 
-    def main():
+    def __init__(self):
+        load_dotenv()
+        self.client_id = os.getenv("CLIENT_ID")
+        self.client_secret = os.getenv("CLIENT_SECRET")
+        self.user = User("user123")  
+        self.recommender_system = MusicRecommenderSystem()
+
+    def run(self):
+        self.user.load_profile()  # Load user profile at start
+        print("Welcome to the Music Recommendation System!")
+        while True:
+            print("\n1. Add Favorite Track")
+            print("2. Get Recommendations")
+            print("3. Save and Exit")
+            choice = input("Choose an option: ")
+
+            if choice == '1':
+                track = input("Enter track name: ")
+                self.user.add_favorite_track(track)
+            elif choice == '2':
+                self.display_recommendations()
+            elif choice == '3':
+                self.user.save_profile()  # Save profile on exit
+                print("Profile saved. Exiting the program.")
+                break
+            else:
+                print("Invalid option. Please try again.")
+
+    def display_recommendations(self):
+        favorite_tracks = list(self.user.favorite_tracks)
+        if not favorite_tracks:
+            print("Please add some favorite tracks first.")
+            return
         
+        recommendations = self.recommender_system.get_recommendations(favorite_tracks)
+        print("Recommendations:")
+        for track in recommendations:
+            print(track)
 
-        spotify_recommender = Recommender(client_id, client_secret)
-        favorite_tracks = []
-        print(f"Enter your top %d favorite tracks: ", (track_nums))
-        for i in range(track_nums):
-            favorite_tracks.append(input(f"Track {i + 1}: "))
-        json_file = spotify_recommender.get_json_result(favorite_tracks)
-
-        with open('./result_example.json', 'w') as f:
-            json.dump(json_file, f, indent=4)
-        
-        # favorite_tracks = []
-        # print(f"Enter your top %d favorite tracks: ", (track_nums))
-        # for i in range(track_nums):
-        #     favorite_tracks.append(input(f"Track {i + 1}: "))
-
-        # print("\nRecommendations base on IDs:")
-        # recommendation_by_id = spotify_recommender.recommend_tracks_by_id(favorite_tracks)
-        # for recommendation in recommendation_by_id:
-        #     print(recommendation)
-
-        # print("\nRecommendations based on genres:")
-        # recommendations_by_genre = spotify_recommender.recommend_tracks_by_genre(favorite_tracks)
-        # for recommendation in recommendations_by_genre:
-        #     print(recommendation)
-
-    if __name__ == "__main__":
-        main()
-
-    def get_token():
-        auth_string = client_id + ":" + client_secret
-        auth_bytes = auth_string.encode("utf-8")
-        auth_base64 = str(base64.b64encode(auth_bytes), "utf-8")
-
-        url = "https://accounts.spotify.com/api/token"
-        headers = {
-            "Authorization": "Basic " + auth_base64,
-            "Content_Type": "application/x-www-form-urlcoded"
-        }
-        data = {"grant_type": "client_credentials"}
-        result = post(url, headers=headers, data=data)
-        json_result = json.loads(result.content)
-        token = json_result["access_token"]
-        return token
 
     def get_auth_header(token):
         return {"Authorization": "Bearer " + token}
 
+if __name__ == "__main__":
+    main_app = Main()
+    main_app.run()
